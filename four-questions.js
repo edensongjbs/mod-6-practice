@@ -68,3 +68,30 @@ let obj = new Proxy({}, {
   }
 })
 console.log(obj.a, obj.a, obj.a)
+
+
+// Question 3
+
+function foo(a,b) {
+    console.log(b)
+    return {
+      foo:function(c){
+        return foo(c,a);
+      }
+    };
+  }
+  let res = foo(0); 
+  res.foo(1); 
+  res.foo(2); 
+  res.foo(3);
+
+
+  function foo(a,b) {
+    console.log(b)
+    return {
+      bar:function(c){
+        return foo(c,a);
+      }
+    };
+  }
+  foo(0).bar(1).bar(2).bar(3);
