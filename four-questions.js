@@ -95,3 +95,22 @@ function foo(a,b) {
     };
   }
   foo(0).bar(1).bar(2).bar(3);
+
+  // Question 4 - Compose
+
+  let middleware = []
+middleware.push((next) => {
+ console.log(1)
+ next()
+ console.log(1.1)
+})
+middleware.push((next) => {
+ console.log(2)
+ next()
+ console.log(2.1)
+})
+middleware.push(() => {
+    console.log(3)
+})
+let fn = compose(middleware)
+fn()
